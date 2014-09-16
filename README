@@ -1,0 +1,77 @@
+###
+# Iban Data collected by Sarah Samson Juan
+# Prepared by Sarah Samson Juan 
+# Created in GETALP, Grenoble, France
+###
+
+
+## INTRODUCTION ##
+This package has iban text and speech corpora used for Automatic Speech Recognition (ASR) experiments. Data is available in the subdirectories of /data. The subdirectories contain:
+a. train - speech data and transcript for training ASR system using Kaldi ASR [1]
+b. test - speech data and transcript for testing ASR system (also Kaldi ASR format)
+
+We have provided text corpus and language model in the /LM directory, while, the pronunciation dictionary in /lang directory.
+
+###PUBLICATION ON CORPORA & IBAN ASR #####
+Details on the corpora and the our experiments on iban ASR  can be found in the following list of publication. We appreciate if you cite them if you intend to publish.
+!!!!!!
+
+
+
+###IBAN SPEECH CORPUS
+News data provided by a local radio station [2] in Sarawak, Malaysia.
+
+Directory: data/train
+Files: text (training transcript), wav.scp (file id and path to audio file), utt2spk (file id and audio id), spk2utt(audio id and file id), wav (.wav files).
+For more information about the format, please refer to Kaldi website http://kaldi.sourceforge.net/data_prep.html
+Description: training data in Kaldi format about 7 hours. Note: The path of wav files in wav.scp MUST BE MODIFIED to point to the actual location.
+
+Directory: data/test
+Files: text (test transcript), wav.scp (file id and path to audio file), utt2spk (file id and audio id), spk2utt(audio id and file id), wav (.wav files).
+Description: testing data in Kaldi format about 1 hour. Note: The path of wav files in wav.scp MUST BE MODIFIED to point to the actual location.
+
+The audio files have the format:
+ib[m|f]_SPK_UTT where, m refers to male and f refers to female speaker, SPK denotes speaker id and UTT is the utterance id.
+
+#### IBAN TEXT CORPUS
+Directory: /LM/
+Files: iban-bp-2012.txt, iban-lm-o3.arpa
+
+# /iban-bp-2012.txt
+Contains 2 M Words. Full text data crawled from an online newspaper [3] and cleaned as much as we could.
+
+# /iban-lm-o3.arpa
+The language model build using SRILM [4] by using the text from iban-bp-2012.txt
+
+
+#### LEXICON/PRONUNCIATION DICTIONARY
+Directory: /lang
+Files : lexicon.txt (lexicon), nonsilence_phones.txt (speech phones), optional_silence.txt (silence phone)
+Description: lexicon contains words and their respective pronunciation, non-speech sound and noise in Kaldi format. Details on the development of the dictionary can be found in [5]. (For this package, we provide the Hybrid version.)
+
+
+### SCRIPTS
+In /kaldi-scripts, you can find all scripts that can be used to train and test models from the existing data and lang directory. Note: Path needs to changed to make it work in your own directory. You can follow the sequence:
+./04_train_mono.sh
+./04a_train_triphone.sh
+./04b_train_MLLT_LDA.sh
+./04c_train_SAT_FMLLR.sh
+./04e_train_sgmm.sh
+
+### WER RESULTS OBTAINED USING OUR CORPORA AND SETTINGS##
+
+AM                WER(%)
+---------------------------
+monophone         41.1 
+triphone          35.3
+triphone+del+del  36.0
+tri+LDA+MLLT      25.9
+tri+SAT+fMLLR     19.7
+SGMM              16.6
+
+       
+
+
+
+##ACKNOWLEDGEMENT ###
+We would like to thank the Ministry of Higher Education Malaysia for providing financial support to conduct this study. We also thank The Borneo Post news agency for providing online materials for building the text corpus and also to Radio Televisyen Malaysia (RTM), Sarawak, Malaysia, for providing the news data.
