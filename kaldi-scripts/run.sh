@@ -17,7 +17,14 @@ fi
 
 [ ! -L "conf" ] && ln -s ../../wsj/s5/conf
 
-#EXPERIMENTS
+
+#Now make MFCC
+for x in $TRAIN $TEST; do
+  steps/make_mfcc.sh --nj 4 data/$x data/log  mfcc
+  steps/compute_cmvn_stats.sh data/$x data/log mfcc
+done
+
+wait;
 
 #Monophone
 ./04_train_mono.sh
@@ -29,3 +36,4 @@ fi
 ./04c_train_SAT_FMLLR.sh
 # + SGMM
 ./04e_train_sgmm.sh
+
