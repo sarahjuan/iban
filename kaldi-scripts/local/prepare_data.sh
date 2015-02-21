@@ -1,14 +1,23 @@
 #!/bin/sh
+# Copyright 2015 Sarah Samson Juan
+# 
 
+if [ -f path.sh ]; then . path.sh; fi
 
-echo "make text, segments, spk2utt, utt2spk files for $TRAIN_DIR $EXP_DIR"
+echo "make text, spk2utt, utt2spk files for $TRAIN_DIR $EXP_DIR"
 
-####build text file########
+srcdir=data
+lexicon=lang/dict/lexicon.txt
 
+echo "make text, spk2utt, utt2spk files for $TRAIN_DIR $EXP_DIR"
 
-####build segments file#######
-
-#####build utt2spk file and spk2utt ##########
+for x in train test; do
+  mkdir -p data/$x
+  cp $srcdir/${x}_wav.scp data/$x/wav.scp || exit 1;
+  cp $srcdir/${x}_text data/$x/text || exit 1;
+  cp $srcdir/$x.spk2utt data/$x/spk2utt || exit 1;
+  cp $srcdir/$x.utt2spk data/$x/utt2spk || exit 1;
+done
 
 ##Compute MFCC
 ###first create the file wav.scp in train and test directories

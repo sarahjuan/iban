@@ -1,20 +1,25 @@
 #!/bin/sh
-. ./00_init_paths.sh
+# Copyright 2015 Sarah Samson Juan
+# To create G.fst from ARPA language model 
 
+if [ -f path.sh ]; then . path.sh; fi
 
-#We use a LM with %PPL=158 
-#To create G.fst from ARPA language model 
+arpa_lm=LM/iban-lm-o3.arpa.tar.gz
+[ ! -f $arpa_lm ] && echo No such file $arpa_lm && exit 1
 
 
 #convert to FST format for Kaldi
-cat ./LM/Oct2013/iban-lm-o3.arpa | ./utils/find_arpa_oovs.pl lang/words.txt  > LM/oovs.txt
-cat ./LM/Oct2013/iban-lm-o3.arpa |    \
+gunzip "$arpa_lm" | ./utils/find_arpa_oovs.pl lang/words.txt  > LM/oovs.txt
+cat "$arpa_lm" |    \
     grep -v '<s> <s>' | \
     grep -v '</s> <s>' | \
     grep -v '</s> </s>' | \
-    $KALDI_DIR/src/bin/arpa2fst - | $KALDI_DIR/tools/openfst-1.3.2/bin/fstprint | \
+    arpa2fst - | fstprint | \
     utils/remove_oovs.pl LM/oovs.txt | \
-    utils/eps2disambig.pl | utils/s2eps.pl | $KALDI_DIR/tools/openfst-1.3.2/bin/fstcompile --isymbols=lang/words.txt \
+    utils/eps2disambig.pl | utils/s2eps.pl | fstcompile --isymbols=lang/words.txt \
       --osymbols=lang/words.txt  --keep_isymbols=false --keep_osymbols=false | \
-     $KALDI_DIR/tools/openfst-1.3.2/bin/fstrmepsilon > ./LM/G.fst
+     fstrmepsilon | fstarcsort --sort_type=ilabel > lang/G.fst
 
+utils/validate_lang.pl data/lang || exit 1;
+
+exit 0;
