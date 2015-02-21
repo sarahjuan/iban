@@ -1,6 +1,21 @@
 #!/bin/sh
 
-. 00_init_paths.sh
+# initialization PATH
+. ./path.sh  || die "path.sh expected";
+# initialization commands
+. ./cmd.sh
+
+# download iban to build ASR
+if [ ! -d "asr_iban" ]; then
+  #available from github
+  svn co https://github.com/sarahjuan/trunk/asr_iban || exit 1;
+fi
+
+[ ! -L "steps" ] && ln -s ../../wsj/s5/steps
+
+[ ! -L "utils" ] && ln -s ../../wsj/s5/utils
+
+[ ! -L "conf" ] && ln -s ../../wsj/s5/conf
 
 #EXPERIMENTS
 
