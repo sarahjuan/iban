@@ -7,8 +7,9 @@
 
 ## INTRODUCTION ##
 This package has iban text and speech corpora used for Automatic Speech Recognition (ASR) experiments. Data is available in the subdirectories of /data. The subdirectories contain:
-a. train - speech data and transcript for training ASR system using Kaldi ASR [1]
-b. test - speech data and transcript for testing ASR system (also Kaldi ASR format)
+a. train - train transcript for training ASR system using Kaldi ASR (http://kaldi.sourceforge.net/)
+b. test - test transcript for testing ASR system (also Kaldi ASR format)
+c. wav - speech corpus
 
 We have provided text corpus and language model in the /LM directory, while, the pronunciation dictionary in /lang directory.
 
