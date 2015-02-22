@@ -7,7 +7,7 @@
 . ./cmd.sh
 
 # download iban to build ASR
-if [ ! -d "asr_iban" ]; then
+if [ ! -d "iban" ]; then
   #available from github
   svn co https://github.com/sarahjuan/iban || exit 1;
 fi
@@ -18,6 +18,9 @@ fi
 
 [ ! -L "conf" ] && ln -s ../../wsj/s5/conf
 
+#Prepare data and language model
+local/prepare_data.sh
+local/prepare_lm.sh
 
 #Now make MFCC
 for x in $TRAIN $TEST; do
