@@ -14,12 +14,50 @@ We have provided text corpus and language model in the /LM directory, while, the
 
 ###PUBLICATION ON CORPORA & IBAN ASR #####
 Details on the corpora and the our experiments on iban ASR  can be found in the following list of publication. We appreciate if you cite them if you intend to publish.
-!!!!!!
+
+@inproceedings{Juan13,
+	Address = {Nagoya, Japan},
+	Author = {Sarah Samson Juan and Laurent Besacier},
+	Booktitle = {Proc. 4th Workshop on South and Southeast Asian Natural Language Processing 2013},
+	Date-Added = {2013-10-04 15:46:05 +0000},
+	Date-Modified = {2013-10-13 13:46:04 +0000},
+	Month = {October},
+	Title = {Fast Bootstrapping of Grapheme to Phoneme System for Under-resourced Languages - Application to the Iban Language},
+	Year = {2013}}
+
+@inproceedings{Juan14,
+	Author = {Sarah Samson Juan and Laurent Besacier and Solange Rossato},
+	Booktitle = {Workshop for Spoken Language Technology for Under-resourced (SLTU)},
+	Date-Added = {2014-03-05 16:17:28 +0000},
+	Date-Modified = {2014-03-08 10:34:59 +0000},
+	Month = {May},
+	Title = {Semi-supervised G2P bootstrapping and its application to ASR for a very under-resourced language: Iban},
+	Year = {2014}}
+
+@conference{Juan14b,
+	Author = {Sarah Samson Juan and Laurent Besacier and Benjamin Lecouteux and Tien-Ping Tan},
+	Booktitle = {Proc. Oriental COCOSDA I 2014},
+	Date-Added = {2014-09-18 12:58:39 +0000},
+	Date-Modified = {2014-09-18 13:05:04 +0000},
+	Editor = {IEEE},
+	Pages = {71-76},
+	Title = {Using closely-related language to build an ASR for a very under-resourced langue : Iban},
+	Year = {2014}}
+
+@inproceedings{Juan14c,
+	Address = {Le Mans, France},
+	Author = {Sarah Samson Juan and Laurent Besacier and Solange Rossato},
+	Booktitle = {Journ\'{e}e d'Etude sur la Parole (JEP)},
+	Date-Added = {2015-02-22 11:04:33 +0000},
+	Date-Modified = {2015-02-22 11:10:35 +0000},
+	Month = {June},
+	Title = {Construction faiblement supervis\'{e}e d'un phon\'{e}tiseur pour la langue iban \`{a} partir de ressources en malais},
+	Year = {2014}}
 
 
 
 ###IBAN SPEECH CORPUS
-News data provided by a local radio station [2] in Sarawak, Malaysia.
+News data provided by a local radio station in Sarawak, Malaysia.
 
 Directory: data/train
 Files: text (training transcript), wav.scp (file id and path to audio file), utt2spk (file id and audio id), spk2utt(audio id and file id), wav (.wav files).
@@ -38,27 +76,24 @@ Directory: /LM/
 Files: iban-bp-2012.txt, iban-lm-o3.arpa
 
 # /iban-bp-2012.txt
-Contains 2 M Words. Full text data crawled from an online newspaper [3] and cleaned as much as we could.
+Contains 2 M Words. Full text data crawled from an online newspaper and cleaned as much as we could.
 
 # /iban-lm-o3.arpa
-The language model build using SRILM [4] by using the text from iban-bp-2012.txt
+The language model build on SRILM (http://www.speech.sri.com/projects/srilm/) using iban-bp-2012.txt
 
 
 #### LEXICON/PRONUNCIATION DICTIONARY
 Directory: /lang
 Files : lexicon.txt (lexicon), nonsilence_phones.txt (speech phones), optional_silence.txt (silence phone)
-Description: lexicon contains words and their respective pronunciation, non-speech sound and noise in Kaldi format. Details on the development of the dictionary can be found in [5]. (For this package, we provide the Hybrid version.)
+Description: lexicon contains words and their respective pronunciation, non-speech sound and noise in Kaldi format. Details on the development of the dictionary can be found in our papers. (For this package, we provided the Iban-Hybrid version.)
 
 
 ### SCRIPTS
-In /kaldi-scripts, you can find all scripts that can be used to train and test models from the existing data and lang directory. Note: Path needs to changed to make it work in your own directory. You can follow the sequence:
-./04_train_mono.sh
-./04a_train_triphone.sh
-./04b_train_MLLT_LDA.sh
-./04c_train_SAT_FMLLR.sh
-./04e_train_sgmm.sh
+In /kaldi-scripts, you can find all scripts that can be used to train and test models from the existing data and lang directory. Note: Path needs to changed to make it work in your own directory. 
+You can test run.sh to prepare data & language model, make mfccs  and train acoustic models.
 
-### WER RESULTS OBTAINED USING OUR CORPORA AND SETTINGS##
+
+### WER RESULTS OBTAINED USING OUR CORPORA AND SETTINGS. RESULTS OBTAINED AFTER UPDATING TEST TRANSCRIPT. THE ONES REPORTED IN OUR PAPERS WERE BEFORE THIS UPDATE##
 
 AM                WER(%)
 ---------------------------
@@ -70,8 +105,5 @@ tri+SAT+fMLLR     19.7
 SGMM              16.6
 
        
-
-
-
 ##ACKNOWLEDGEMENT ###
 We would like to thank the Ministry of Higher Education Malaysia for providing financial support to conduct this study. We also thank The Borneo Post news agency for providing online materials for building the text corpus and also to Radio Televisyen Malaysia (RTM), Sarawak, Malaysia, for providing the news data.
