@@ -89,9 +89,15 @@ Files : lexicon.txt (lexicon), nonsilence_phones.txt (speech phones), optional_s
 Description: lexicon contains words and their respective pronunciation, non-speech sound and noise in Kaldi format. Details on the development of the dictionary can be found in our papers. (For this package, we provided the Iban-Hybrid version.)
 
 
+#TO DOWNLOAD THE REPOSITORY
+You first need to install Subversion (SVN). Then type into a shell:
+
+svn co https://github.com/sarahjuan/iban
+
 ### SCRIPTS
 In /kaldi-scripts, you can find all scripts that can be used to train and test models from the existing data and lang directory. Note: Path needs to changed to make it work in your own directory. 
-You can test run.sh to prepare data & language model, make mfccs  and train acoustic models.
+
+You can launch run.sh to prepare data & language model, make mfccs  and train acoustic models.
 
 
 ### WER RESULTS OBTAINED USING OUR CORPORA AND SETTINGS. RESULTS OBTAINED AFTER UPDATING TEST TRANSCRIPT. THE ONES REPORTED IN OUR PAPERS WERE BEFORE THIS UPDATE##
