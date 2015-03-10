@@ -97,7 +97,7 @@ svn co https://github.com/sarahjuan/iban
 ### SCRIPTS
 In /kaldi-scripts, you can find all scripts that can be used to train and test models from the existing data and lang directory. Note: Path needs to changed to make it work in your own directory. 
 
-You can launch run.sh to prepare data & language model, make mfccs  and train acoustic models.
+You can launch run.sh to prepare data & language model, make mfccs and train acoustic models.
 
 
 ### WER RESULTS OBTAINED USING OUR CORPORA AND SETTINGS. RESULTS OBTAINED AFTER UPDATING TEST TRANSCRIPT. THE ONES REPORTED IN OUR PAPERS WERE BEFORE THIS UPDATE##
@@ -110,7 +110,7 @@ triphone+del+del  36.0
 tri+LDA+MLLT      25.9
 tri+SAT+fMLLR     19.7
 SGMM              16.6
-
+DNN               15.75
        
 ##ACKNOWLEDGEMENT ###
 We would like to thank the Ministry of Higher Education Malaysia for providing financial support to conduct this study. We also thank The Borneo Post news agency for providing online materials for building the text corpus and also to Radio Televisyen Malaysia (RTM), Sarawak, Malaysia, for providing the news data.
