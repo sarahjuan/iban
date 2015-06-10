@@ -13,33 +13,27 @@ c. wav - speech corpus
 
 We have provided text corpus and language model in the /LM directory, while, the pronunciation dictionary in /lang directory.
 
-###PUBLICATION ON CORPORA & IBAN ASR #####
+###PUBLICATION ON IBAN DATA AND ASR #####
 Details on the corpora and the our experiments on iban ASR  can be found in the following list of publication. We appreciate if you cite them if you intend to publish.
 
 @inproceedings{Juan13,
 	Address = {Nagoya, Japan},
 	Author = {Sarah Samson Juan and Laurent Besacier},
-	Booktitle = {Proc. 4th Workshop on South and Southeast Asian Natural Language Processing 2013},
-	Date-Added = {2013-10-04 15:46:05 +0000},
-	Date-Modified = {2013-10-13 13:46:04 +0000},
+	Booktitle = {Proceedings of 4th Workshop on South and Southeast Asian Natural Language Processing 2013},
 	Month = {October},
 	Title = {Fast Bootstrapping of Grapheme to Phoneme System for Under-resourced Languages - Application to the Iban Language},
 	Year = {2013}}
 
 @inproceedings{Juan14,
 	Author = {Sarah Samson Juan and Laurent Besacier and Solange Rossato},
-	Booktitle = {Workshop for Spoken Language Technology for Under-resourced (SLTU)},
-	Date-Added = {2014-03-05 16:17:28 +0000},
-	Date-Modified = {2014-03-08 10:34:59 +0000},
+	Booktitle = {Proceedings of Workshop for Spoken Language Technology for Under-resourced (SLTU)},
 	Month = {May},
 	Title = {Semi-supervised G2P bootstrapping and its application to ASR for a very under-resourced language: Iban},
 	Year = {2014}}
 
-@conference{Juan14b,
+@inproceedings{Juan14b,
 	Author = {Sarah Samson Juan and Laurent Besacier and Benjamin Lecouteux and Tien-Ping Tan},
-	Booktitle = {Proc. Oriental COCOSDA I 2014},
-	Date-Added = {2014-09-18 12:58:39 +0000},
-	Date-Modified = {2014-09-18 13:05:04 +0000},
+	Booktitle = {Proceedings of Oriental COCOSDA I 2014},
 	Editor = {IEEE},
 	Pages = {71-76},
 	Title = {Using closely-related language to build an ASR for a very under-resourced langue : Iban},
@@ -49,12 +43,17 @@ Details on the corpora and the our experiments on iban ASR  can be found in the 
 	Address = {Le Mans, France},
 	Author = {Sarah Samson Juan and Laurent Besacier and Solange Rossato},
 	Booktitle = {Journ\'{e}e d'Etude sur la Parole (JEP)},
-	Date-Added = {2015-02-22 11:04:33 +0000},
-	Date-Modified = {2015-02-22 11:10:35 +0000},
 	Month = {June},
 	Title = {Construction faiblement supervis\'{e}e d'un phon\'{e}tiseur pour la langue iban \`{a} partir de ressources en malais},
 	Year = {2014}}
 
+@inproceedings{Juan2015,
+  	Title = {Using Resources from a closely-Related language to develop ASR for a very under-resourced Language: A case study for Iban},
+  	Author = {Sarah Samson Juan and Laurent Besacier and Benjamin Lecouteux and Mohamed Dyab},
+  	Booktitle = {Proceedings of INTERSPEECH},
+  	Year = {2015},
+  	Address = {Dresden, Germany},
+  	Month = {September}}
 
 
 ###IBAN SPEECH CORPUS
@@ -110,7 +109,7 @@ triphone+del+del  36.0
 tri+LDA+MLLT      25.9
 tri+SAT+fMLLR     19.7
 SGMM              16.6
-DNN               15.75
+DNN               15.8
        
 ##ACKNOWLEDGEMENT ###
 We would like to thank the Ministry of Higher Education Malaysia for providing financial support to conduct this study. We also thank The Borneo Post news agency for providing online materials for building the text corpus and also to Radio Televisyen Malaysia (RTM), Sarawak, Malaysia, for providing the news data.
