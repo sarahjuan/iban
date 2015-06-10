@@ -14,15 +14,7 @@ c. wav - speech corpus
 We have provided text corpus and language model in the /LM directory, while, the pronunciation dictionary in /lang directory.
 
 ###PUBLICATION ON IBAN DATA AND ASR #####
-Details on the corpora and the our experiments on iban ASR  can be found in the following list of publication. We appreciate if you cite them if you intend to publish.
-
-@inproceedings{Juan13,
-	Address = {Nagoya, Japan},
-	Author = {Sarah Samson Juan and Laurent Besacier},
-	Booktitle = {Proceedings of 4th Workshop on South and Southeast Asian Natural Language Processing 2013},
-	Month = {October},
-	Title = {Fast Bootstrapping of Grapheme to Phoneme System for Under-resourced Languages - Application to the Iban Language},
-	Year = {2013}}
+Details on the corpora and the our experiments on iban ASR can be found in the following list of publication. We appreciate if you cite them if you intend to publish.
 
 @inproceedings{Juan14,
 	Author = {Sarah Samson Juan and Laurent Besacier and Solange Rossato},
@@ -31,21 +23,6 @@ Details on the corpora and the our experiments on iban ASR  can be found in the 
 	Title = {Semi-supervised G2P bootstrapping and its application to ASR for a very under-resourced language: Iban},
 	Year = {2014}}
 
-@inproceedings{Juan14b,
-	Author = {Sarah Samson Juan and Laurent Besacier and Benjamin Lecouteux and Tien-Ping Tan},
-	Booktitle = {Proceedings of Oriental COCOSDA I 2014},
-	Editor = {IEEE},
-	Pages = {71-76},
-	Title = {Using closely-related language to build an ASR for a very under-resourced langue : Iban},
-	Year = {2014}}
-
-@inproceedings{Juan14c,
-	Address = {Le Mans, France},
-	Author = {Sarah Samson Juan and Laurent Besacier and Solange Rossato},
-	Booktitle = {Journ\'{e}e d'Etude sur la Parole (JEP)},
-	Month = {June},
-	Title = {Construction faiblement supervis\'{e}e d'un phon\'{e}tiseur pour la langue iban \`{a} partir de ressources en malais},
-	Year = {2014}}
 
 @inproceedings{Juan2015,
   	Title = {Using Resources from a closely-Related language to develop ASR for a very under-resourced Language: A case study for Iban},
