@@ -23,7 +23,7 @@
 . ./path.sh ## Source the tools/utils (import the queue.pl)
 
 # Config:
-gmmdir=exp/tri3b
+gmmdir=exp/tri2a
 stage=-1 # resume training with --stage=N
 # End of config.
 . utils/parse_options.sh || exit 1;
@@ -31,12 +31,13 @@ stage=-1 # resume training with --stage=N
 
 if [ $stage -le 0 ]; then
   # split the data : 90% train 10% cross-validation (held-out)
+  dir=data/train
   utils/subset_data_dir_tr_cv.sh $dir ${dir}_tr90 ${dir}_cv10 || exit 1
 fi
 
 if [ $stage -le 1 ]; then
   # Pre-train DBN, i.e. a stack of RBMs (small database, smaller DNN)
-  dir=exp/dnn4b_pretrain-dbn
+  dir=exp/dnn4b_pretrain-dbn-deltas
   (tail --pid=$$ -F $dir/log/pretrain_dbn.log 2>/dev/null)& # forward log
   $cuda_cmd $dir/log/pretrain_dbn.log \
     steps/nnet/pretrain_dbn.sh --hid-dim 1024 --rbm-iter 20 data/train $dir || exit 1;
@@ -44,10 +45,10 @@ fi
 
 if [ $stage -le 2 ]; then
   # Train the DNN optimizing per-frame cross-entropy.
-  dir=exp/dnn4b_pretrain-dbn_dnn
+  dir=exp/dnn4b_pretrain-dbn_dnn-deltas
   ali=${gmmdir}_ali
-  feature_transform=exp/dnn4b_pretrain-dbn/final.feature_transform
-  dbn=exp/dnn4b_pretrain-dbn/6.dbn
+  feature_transform=exp/dnn4b_pretrain-dbn-deltas/final.feature_transform
+  dbn=exp/dnn4b_pretrain-dbn-deltas/6.dbn
   (tail --pid=$$ -F $dir/log/train_nnet.log 2>/dev/null)& # forward log
   # Train
   $cuda_cmd $dir/log/train_nnet.log \
@@ -61,8 +62,8 @@ fi
 
 # Sequence training using sMBR criterion, we do Stochastic-GD 
 # with per-utterance updates. We use usually good acwt 0.1
-dir=exp/dnn4b_pretrain-dbn_dnn_smbr
-srcdir=exp/dnn4b_pretrain-dbn_dnn
+dir=exp/dnn4b_pretrain-dbn_dnn_smbr-deltas
+srcdir=exp/dnn4b_pretrain-dbn_dnn-deltas
 acwt=0.1
 
 if [ $stage -le 3 ]; then
