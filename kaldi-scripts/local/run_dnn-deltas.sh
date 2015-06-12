@@ -1,21 +1,10 @@
 #!/bin/bash
 
-# Copyright 2012-2014  Brno University of Technology (Author: Karel Vesely)
+# Copyright 2015 Sarah Samson Juan
 # Apache 2.0
-# Modified by Sarah Samson Juan
-# Date: March 2015
 
 # This example script trains a DNN on top of delta delta features. 
-# The training is done in 3 stages,
-#
-# 1) RBM pre-training:
-#    in this unsupervised stage we train stack of RBMs, 
-#    a good starting point for frame cross-entropy trainig.
-# 2) frame cross-entropy training:
-#    the objective is to classify frames to correct pdfs.
-# 3) sequence-training optimizing sMBR: 
-#    the objective is to emphasize state-sequences with better 
-#    frame accuracy w.r.t. reference alignment.
+# Based on Karel's setup for DNN
 
 . ./cmd.sh ## You'll want to change cmd.sh to something that will work on your system.
            ## This relates to the queue.
@@ -91,18 +80,3 @@ for x in exp/dnn4b_*/decode*; do [ -d $x ] && grep WER $x/wer_* | utils/best_wer
 echo Success
 exit 0
 
-# Getting results [see RESULTS file]
-# for x in exp/*/decode*; do [ -d $x ] && grep WER $x/wer_* | utils/best_wer.sh; done
-
-# Showing how model conversion to nnet2 works; note, we use the expanded variable
-# names here so be careful in case the script changes.
-# steps/nnet2/convert_nnet1_to_nnet2.sh exp/dnn4b_pretrain-dbn_dnn exp/dnn4b_nnet2
-# cp exp/tri3b/splice_opts exp/tri3b/cmvn_opts exp/tri3b/final.mat exp/dnn4b_nnet2/
-# 
-#  steps/nnet2/decode.sh --nj 4 --cmd "$decode_cmd" --transform-dir exp/tri3b/decode_test \
-#    --config conf/decode.config exp/tri3b/graph data/test exp/dnn4b_nnet2/decode_test
-
-# decoding results are essentially the same (any small difference is probably because
-# decode.config != decode_dnn.config).
-# %WER 1.58 [ 198 / 12533, 22 ins, 45 del, 131 sub ] exp/dnn4b_nnet2/decode/wer_3
-# %WER 1.59 [ 199 / 12533, 23 ins, 45 del, 131 sub ] exp/dnn4b_pretrain-dbn_dnn/decode/wer_3
